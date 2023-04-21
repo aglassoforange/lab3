@@ -1,22 +1,30 @@
-
+import java.io.LineNumberInputStream;
 
 public class ArrayExamples {
 
   // Changes the input array to be in reversed order
   static void reverseInPlace(int[] arr) {
-    for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = arr[arr.length - i - 1];
+    int head = 0;
+    int end = arr.length - 1;
+    while(head < end){
+      int temp = arr[head];
+      arr[head] = arr[end];
+      arr[end] = temp;
+      head ++;
+      end --;
     }
   }
 
   // Returns a *new* array with all the elements of the input array in reversed
   // order
   static int[] reversed(int[] arr) {
-    int[] newArray = new int[arr.length];
-    for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = newArray[arr.length - i - 1];
+    int[] b = new int[arr.length];
+    int j = arr.length;
+    for (int i = 0; i < arr.length; i++) {
+        b[j - 1] = arr[i];
+        j = j - 1;
     }
-    return arr;
+    return b;
   }
 
   // Averages the numbers in the array (takes the mean), but leaves out the
